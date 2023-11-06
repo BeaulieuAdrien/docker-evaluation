@@ -1,0 +1,9 @@
+version: '3'
+services:
+  database:
+    image: mysql:8.2.0
+    ports:
+      - "4545:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: docker_db
