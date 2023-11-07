@@ -4,7 +4,7 @@
   "description": "REST API FOR DOCKER EVAL",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon ."
+    "dev": "sequelize db:migrate && nodemon ."
   },
   "dependencies": {
     "cors": "^2.8.5",

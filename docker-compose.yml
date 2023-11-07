@@ -7,18 +7,25 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
   docker-api:
     build: './docker-api'
     ports:
       - 3000:3000
     depends_on:
-      - database
+      database:
+        condition: service_healthy
     env_file: ./.env
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_PORT: 3306
+      MYSQL_HOST: ${MYSQL_HOST}
       HTTP_API_PORT: ${HTTP_API_PORT}
       HTTP_API_ADD: ${HTTP_API_ADD}
     stdin_open: true
