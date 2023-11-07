@@ -3,7 +3,23 @@ services:
   database:
     image: mysql:8.2.0
     ports:
-      - "4545:3306"
+      - 4545:3306
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
+  docker-api:
+    build: './docker-api'
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+    env_file: ./.env
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PORT: ${MYSQL_PORT}
+      HTTP_API_PORT: ${HTTP_API_PORT}
+      HTTP_API_ADD: ${HTTP_API_ADD}
+    stdin_open: true
+    tty: true
