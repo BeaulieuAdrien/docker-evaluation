@@ -2,15 +2,12 @@ const express = require('express');
 
 const helmet = require('helmet');
 const cors = require('cors');
-const morgan = require('morgan');
 
 const app = express();
 
 app.use([
     helmet(),
     cors(),
-    morgan('tiny'),
-    hello()
 ]);
 
 // Default route
@@ -19,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 // Load controllers
-// TO DO
+app.use('/vehicules', require('@@app/controllers/vehicule.controller'));
 
 // Export app
 module.exports = app;
