@@ -11,4 +11,4 @@ Tous ces éléments seront lancable depuis un conteneur docker, avec toutes les 
 
 L'API est sur le port 3000
 La SGBD est sur le port 4545
-Le front est sur le port 
+Le front est sur le port 8383 (http://localhost:8383/)

@@ -6,7 +6,7 @@
     <button type="submit">Ajouter</button>
   </form>
 
-  <div v-if="alert">
+  <div v-if="alert" class="alert">
     Erreur dans l'envoi
   </div>
 </template>

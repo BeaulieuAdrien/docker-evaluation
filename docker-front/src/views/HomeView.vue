@@ -3,11 +3,11 @@
     <ApiHelloWorld :sentence="sentence" />
   </main>
 
-  <router-link :to="{ name: 'vehicule_list' }">
+  <router-link :to="{ name: 'vehicule_list' }" class="router-link">
     Voir les véhicules
   </router-link>
   <br>
-  <router-link :to="{ name: 'vehicule_add' }">
+  <router-link :to="{ name: 'vehicule_add' }" class="router-link">
     Ajouter un véhicule
   </router-link>
 
