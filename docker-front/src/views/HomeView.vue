@@ -2,6 +2,15 @@
   <main>
     <ApiHelloWorld :sentence="sentence" />
   </main>
+
+  <router-link :to="{ name: 'vehicule_list' }">
+    Voir les véhicules
+  </router-link>
+  <br>
+  <router-link :to="{ name: 'vehicule_add' }">
+    Ajouter un véhicule
+  </router-link>
+
 </template>
 
 <script>

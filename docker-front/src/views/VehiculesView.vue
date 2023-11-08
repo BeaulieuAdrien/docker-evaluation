@@ -8,6 +8,10 @@
             <h2>Aucun véhicules enregistrés</h2>
         </div>
     </main>
+    <router-link :to="{ name: 'vehicule_add' }">
+        Ajouter un véhicule
+    </router-link>
+
 </template>
 
 <script>
