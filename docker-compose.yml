@@ -28,5 +28,11 @@ services:
       MYSQL_HOST: ${MYSQL_HOST}
       HTTP_API_PORT: ${HTTP_API_PORT}
       HTTP_API_ADD: ${HTTP_API_ADD}
+  docker-front:
+    build: './docker-front'
+    ports:
+      - 8383:80
+    depends_on:
+      - docker-api
     stdin_open: true
     tty: true
