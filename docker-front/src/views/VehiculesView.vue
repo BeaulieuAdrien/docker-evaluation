@@ -1,6 +1,12 @@
 <template>
     <main>
-        <VehiculeList :vehicules="vehicules" />
+        <div v-if="isEmpty" >
+            <h2>Liste des vehicules</h2>
+            <ListVehicule :vehicules="vehicules" />
+        </div>
+        <div v-else>
+            <h2>Aucun véhicules enregistrés</h2>
+        </div>
     </main>
 </template>
 
@@ -13,7 +19,8 @@ export default {
     components: {ListVehicule},
     data() {
         return {
-            vehicules: []
+            vehicules: [],
+            isEmpty: true,
         }
     },
     created() {
@@ -23,7 +30,8 @@ export default {
         fetchVehicules() {
             axiosInstance.get('/vehicules')
             .then((result) => {
-                this.vehicules = result;
+                this.vehicules = result.data;
+                if (this.vehicules.lenght > 0) this.isEmpty = false;
             })
             .catch((err) => {
                 console.log(err);
